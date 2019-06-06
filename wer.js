@@ -45,7 +45,7 @@ const edit_distance = function(a, b, debug) {
             	m[i][j] = m[i - 1][j - 1]
             } else {
             	// if words do not match -> increment the distance by 1
-            	m[i][j] = Math.min(m[i-1][j-1] + 1, m[i][j-1] + 1,m[i-1][j] + 1);
+            	m[i][j] = Math.min(m[i-1][j-1] + 1, m[i][j-1] + 1, m[i-1][j] + 1);
             }
         }
     }
