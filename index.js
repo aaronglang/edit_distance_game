@@ -68,7 +68,7 @@ readline.on('close', () => {
     let avg  = Math.floor(total/cumulative_wer.length);
     let final = {
         number_correct: correct,
-        cumulative_wer: `${avg}%`
+        average_wer: `${avg}%`
     };
     console.log('\nyour score:\n');
     console.log(final);
