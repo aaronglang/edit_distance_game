@@ -9,10 +9,14 @@ let tests = [
     'seashore',
     'the quick brown fox',
     'jumps',
-    'over the lazy dog'
+    'over the lazy dog',
+    'this is a test',
+    'testing 123',
+    'a b c d e',
+    'abcdefg'
 ];
 
-let lives = 10, correct = 0, total = 0;
+let lives = 10, correct = 0, total = 0, cumulative_wer = [];
 
 
 const recursive_readline = () => {
@@ -33,7 +37,7 @@ const recursive_readline = () => {
     let timer = setInterval( () => {
         total += 1;
         lives-=1;
-        readline.write('too late!\r');
+        readline.write('\r');
     }, time);
 
     let r = Math.floor(Math.random() * tests.length);
@@ -52,6 +56,7 @@ const recursive_readline = () => {
         } else lives-=distance;
         total += 1;
         // log results
+        cumulative_wer.push(percent);
         console.log(`\n${percent}% error rate. ${(distance === 0) ? 'nice job!' : (distance > 2) ? 'ouch...' : 'keep trying!'}\n`);
         recursive_readline();
     });
@@ -59,9 +64,11 @@ const recursive_readline = () => {
 
 // display score when user finishes
 readline.on('close', () => {
+    const total = cumulative_wer.reduce((acc, x) => acc + x, 0);
+    let avg  = Math.floor(total/cumulative_wer.length);
     let final = {
         number_correct: correct,
-        accuracy: `${Math.floor(correct/total*100)}%`
+        cumulative_wer: `${avg}%`
     };
     console.log('\nyour score:\n');
     console.log(final);
