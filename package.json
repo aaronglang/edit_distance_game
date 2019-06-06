@@ -1,0 +1,11 @@
+{
+  "name": "edit_distance",
+  "version": "1.0.0",
+  "description": "",
+  "main": "wer.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "",
+  "license": "MIT"
+}
